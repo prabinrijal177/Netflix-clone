@@ -3,7 +3,7 @@ import { useEffect, useReducer } from "react";
 import { Movie } from "../types";
 
 interface State{
-    data: Movie[] | null;
+    data: Movie | null;
     error: string | null;
     loading: boolean;
 }
@@ -21,7 +21,7 @@ enum ActionType{
     FAILED,
 }
 
-type Action = | {type: ActionType.LOADING} | {type: ActionType.SUCCESS; payload:Movie[]} | {type: ActionType.FAILED; payload: string};
+type Action = | {type: ActionType.LOADING} | {type: ActionType.SUCCESS; payload:Movie} | {type: ActionType.FAILED; payload: string};
 
 const reducer = (_ : State, action: Action) : State =>{
     switch(action.type){
