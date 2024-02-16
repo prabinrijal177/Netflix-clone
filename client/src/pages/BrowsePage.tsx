@@ -4,12 +4,18 @@ import NavBar from "../components/NavBar";
 import useMoviesList from "../hooks/useMoviesList";
 import MovieList from "./MovieList";
 import LoadingCards from "../components/LoadingCards";
+import { RootState } from "../app/store";
+import { useSelector } from "react-redux";
 
 export default function BrowsePage() {
   const [offset, setOffset] = useState(0);
   const {data, loading, error} = useMoviesList(offset);
 
  const observer= useRef<null | IntersectionObserver> (null);
+
+ const {user, isLoading} = useSelector((state: RootState) => state.user.value);
+
+ console.log({user, isLoading});
 
  const lastElementRef = useCallback((node: HTMLDivElement) =>{
   if(loading) return;

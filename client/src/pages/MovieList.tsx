@@ -13,7 +13,7 @@ export default function MovieList({
       <div>
         <p className="text-black text-2xl font-semibold mn-4">Popular Shows</p>
         <div className="flex flex-wrap gap-2 justify-between">
-          {movies.map((movie) => (
+          {movies.map((movie, index) => (
             <MovieCard key={movie.id} movie={movie}  lastElementRef={movies.length === index + 1 ? lastElementRef : null}/>
           ))}
         </div>
